@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shajahan PJ — AI Solutions Engineer</title>
+<meta name="description" content="Shajahan PJ — AI Solutions Engineer specializing in Agentic AI, RAG systems, and enterprise automation. Building intelligent systems that replace manual workflows.">
+<meta name="keywords" content="AI Engineer, Agentic AI, RAG, LangGraph, FastAPI, React, GPT-4, Sales Automation">
+<meta property="og:title" content="Shajahan PJ — AI Solutions Engineer">
+<meta property="og:description" content="Building intelligent AI systems that automate enterprise workflows">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230F172A'/><text y='72' x='50' text-anchor='middle' font-size='55' fill='%2360A5FA' font-family='monospace'>S</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0A0F1C;
+  --bg2: #111827;
+  --bg3: #1E293B;
+  --text: #F1F5F9;
+  --text2: #94A3B8;
+  --text3: #64748B;
+  --accent: #3B82F6;
+  --accent2: #60A5FA;
+  --green: #10B981;
+  --purple: #8B5CF6;
+  --amber: #F59E0B;
+  --coral: #F97316;
+  --radius: 16px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--accent); color: white; }
+
+a { color: var(--accent2); text-decoration: none; transition: 0.2s; }
+a:hover { color: var(--text); }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* ═══ NAV ═══ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10, 15, 28, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.nav-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 24px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+.nav-logo {
+  font-weight: 700; font-size: 20px; color: var(--text);
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo-mark {
+  width: 32px; height: 32px; background: var(--accent);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-weight: 700; font-size: 16px;
+}
+.nav-links { display: flex; gap: 32px; }
+.nav-links a {
+  color: var(--text3); font-size: 14px; font-weight: 500;
+  letter-spacing: 0.3px; transition: 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  background: var(--accent); color: white; padding: 8px 20px;
+  border-radius: 8px; font-size: 14px; font-weight: 600;
+  border: none; cursor: pointer; transition: 0.2s;
+}
+.nav-cta:hover { background: #2563EB; color: white; }
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  padding: 120px 0 80px; position: relative;
+}
+.hero-grid {
+  position: absolute; inset: 0; opacity: 0.03;
+  background-image:
+    linear-gradient(var(--accent) 1px, transparent 1px),
+    linear-gradient(90deg, var(--accent) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-glow {
+  position: absolute; width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%);
+  top: 10%; right: -10%; border-radius: 50%;
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2);
+  color: var(--accent2); font-size: 13px; font-weight: 600;
+  padding: 6px 16px; border-radius: 20px; margin-bottom: 28px;
+  letter-spacing: 0.5px;
+}
+.hero-badge-dot {
+  width: 6px; height: 6px; background: var(--green);
+  border-radius: 50%; animation: pulse 2s infinite;
+}
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+h1 {
+  font-size: clamp(42px, 6vw, 72px); font-weight: 800;
+  line-height: 1.05; letter-spacing: -2px; margin-bottom: 20px;
+}
+h1 .gradient {
+  background: linear-gradient(135deg, var(--accent), var(--accent2), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+.hero-desc {
+  font-size: 18px; color: var(--text2); max-width: 560px;
+  line-height: 1.7; margin-bottom: 36px;
+}
+.hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent); color: white; padding: 14px 28px;
+  border-radius: 12px; font-size: 15px; font-weight: 600;
+  border: none; cursor: pointer; transition: 0.2s;
+  text-decoration: none;
+}
+.btn-primary:hover { background: #2563EB; transform: translateY(-1px); color: white; }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.05); color: var(--text);
+  padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: 600;
+  border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: 0.2s;
+  text-decoration: none;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.1); color: white; }
+
+.hero-stats {
+  display: flex; gap: 48px; margin-top: 64px;
+  padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06);
+}
+.stat-value { font-size: 32px; font-weight: 700; color: var(--text); }
+.stat-value span { color: var(--accent2); }
+.stat-label { font-size: 13px; color: var(--text3); margin-top: 4px; }
+
+/* ═══ SECTIONS ═══ */
+section { padding: 100px 0; }
+.section-label {
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  color: var(--accent2); letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(28px, 4vw, 40px); font-weight: 700;
+  letter-spacing: -1px; margin-bottom: 16px;
+}
+.section-desc { font-size: 16px; color: var(--text2); max-width: 600px; margin-bottom: 48px; }
+
+/* ═══ TECH STACK ═══ */
+.tech-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+.tech-item {
+  background: var(--bg2); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; padding: 16px 20px;
+  display: flex; align-items: center; gap: 12px;
+  transition: 0.2s;
+}
+.tech-item:hover { border-color: rgba(59,130,246,0.3); transform: translateY(-2px); }
+.tech-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; font-family: 'JetBrains Mono', monospace;
+}
+.tech-icon.blue { background: rgba(59,130,246,0.15); color: var(--accent2); }
+.tech-icon.green { background: rgba(16,185,129,0.15); color: var(--green); }
+.tech-icon.purple { background: rgba(139,92,246,0.15); color: var(--purple); }
+.tech-icon.amber { background: rgba(245,158,11,0.15); color: var(--amber); }
+.tech-icon.coral { background: rgba(249,115,22,0.15); color: var(--coral); }
+.tech-name { font-size: 14px; font-weight: 500; color: var(--text); }
+
+/* ═══ PROJECTS ═══ */
+.project-card {
+  background: var(--bg2); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius); overflow: hidden;
+  margin-bottom: 32px; transition: 0.3s;
+}
+.project-card:hover { border-color: rgba(59,130,246,0.2); }
+.project-video {
+  width: 100%; aspect-ratio: 16/9; background: var(--bg);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.project-video iframe { width: 100%; height: 100%; border: none; }
+.project-body { padding: 32px; }
+.project-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.project-tag {
+  font-size: 12px; font-weight: 600; padding: 4px 12px;
+  border-radius: 6px; letter-spacing: 0.3px;
+}
+.tag-live { background: rgba(16,185,129,0.15); color: var(--green); }
+.tag-ai { background: rgba(59,130,246,0.15); color: var(--accent2); }
+.tag-rag { background: rgba(139,92,246,0.15); color: var(--purple); }
+.tag-mfg { background: rgba(245,158,11,0.15); color: var(--amber); }
+
+.project-title {
+  font-size: 24px; font-weight: 700; margin-bottom: 8px;
+  letter-spacing: -0.5px;
+}
+.project-subtitle {
+  font-size: 14px; color: var(--text3); margin-bottom: 16px;
+}
+.project-desc { font-size: 15px; color: var(--text2); line-height: 1.7; margin-bottom: 20px; }
+.project-stack {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06);
+}
+.project-stack span {
+  font-family: 'JetBrains Mono', monospace; font-size: 12px;
+  color: var(--text3); background: rgba(255,255,255,0.04);
+  padding: 4px 10px; border-radius: 6px;
+}
+
+.project-features {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  margin-bottom: 20px;
+}
+.project-feat {
+  font-size: 13px; color: var(--text2);
+  display: flex; align-items: center; gap: 8px;
+}
+.project-feat::before {
+  content: ''; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); flex-shrink: 0;
+}
+
+/* ═══ EXPERIENCE ═══ */
+.exp-list { display: flex; flex-direction: column; gap: 24px; }
+.exp-card {
+  background: var(--bg2); border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius); padding: 28px 32px;
+  display: flex; gap: 24px; transition: 0.2s;
+}
+.exp-card:hover { border-color: rgba(59,130,246,0.2); }
+.exp-date {
+  font-family: 'JetBrains Mono', monospace; font-size: 13px;
+  color: var(--text3); min-width: 120px; padding-top: 4px;
+}
+.exp-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+.exp-company { font-size: 14px; color: var(--accent2); margin-bottom: 8px; }
+.exp-desc { font-size: 14px; color: var(--text2); line-height: 1.6; }
+
+/* ═══ CONTACT ═══ */
+.contact-section { background: var(--bg2); border-radius: var(--radius); padding: 64px; text-align: center; }
+.contact-title { font-size: 32px; font-weight: 700; margin-bottom: 12px; letter-spacing: -1px; }
+.contact-desc { font-size: 16px; color: var(--text2); margin-bottom: 32px; }
+.contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.contact-link {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+  padding: 12px 24px; border-radius: 12px; font-size: 14px; font-weight: 500;
+  color: var(--text); transition: 0.2s;
+}
+.contact-link:hover { border-color: var(--accent); background: rgba(59,130,246,0.1); color: white; }
+.contact-link-icon { font-size: 18px; }
+
+/* ═══ FOOTER ═══ */
+footer {
+  padding: 40px 0; text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+footer p { font-size: 13px; color: var(--text3); }
+
+/* ═══ ANIMATIONS ═══ */
+.fade-in { opacity: 0; transform: translateY(20px); transition: 0.6s ease; }
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hero-stats { flex-wrap: wrap; gap: 24px; }
+  .project-features { grid-template-columns: 1fr; }
+  .exp-card { flex-direction: column; gap: 8px; }
+  .contact-section { padding: 40px 24px; }
+  .tech-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-mark">S</div>
+      Shajahan
+    </div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="mailto:shajahan.aiworks@gmail.com" class="nav-cta" style="text-decoration:none;color:white;">Get in touch</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Available for freelance projects
+    </div>
+    <h1>Building <span class="gradient">intelligent AI</span><br>systems that work</h1>
+    <p class="hero-desc">
+      I'm Shajahan PJ — an AI Solutions Engineer specializing in agentic AI,
+      RAG systems, and enterprise automation. I build AI products that replace manual
+      workflows and save companies thousands of hours.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View projects ↓</a>
+      <a href="https://www.linkedin.com/in/shajahanpj/" target="_blank" class="btn-secondary">LinkedIn →</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-value">3<span>+</span></div>
+        <div class="stat-label">Enterprise AI projects</div>
+      </div>
+      <div>
+        <div class="stat-value">5<span>+</span></div>
+        <div class="stat-label">Years in tech</div>
+      </div>
+      <div>
+        <div class="stat-value">AI<span>→</span></div>
+        <div class="stat-label">Agentic systems focus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">// tech stack</div>
+    <div class="section-title">Tools I build with</div>
+    <div class="section-desc">
+      Full-stack AI engineering — from LLM orchestration to production deployment.
+    </div>
+    <div class="tech-grid">
+      <div class="tech-item"><div class="tech-icon blue">Py</div><div class="tech-name">Python</div></div>
+      <div class="tech-item"><div class="tech-icon blue">FA</div><div class="tech-name">FastAPI</div></div>
+      <div class="tech-item"><div class="tech-icon blue">Re</div><div class="tech-name">React</div></div>
+      <div class="tech-item"><div class="tech-icon blue">TS</div><div class="tech-name">TypeScript</div></div>
+      <div class="tech-item"><div class="tech-icon green">LG</div><div class="tech-name">LangGraph</div></div>
+      <div class="tech-item"><div class="tech-icon green">LC</div><div class="tech-name">LangChain</div></div>
+      <div class="tech-item"><div class="tech-icon purple">GP</div><div class="tech-name">GPT-4o</div></div>
+      <div class="tech-item"><div class="tech-icon purple">RG</div><div class="tech-name">RAG</div></div>
+      <div class="tech-item"><div class="tech-icon amber">Pg</div><div class="tech-name">PostgreSQL</div></div>
+      <div class="tech-item"><div class="tech-icon amber">Ce</div><div class="tech-name">Celery</div></div>
+      <div class="tech-item"><div class="tech-icon coral">Dk</div><div class="tech-name">Docker</div></div>
+      <div class="tech-item"><div class="tech-icon coral">AW</div><div class="tech-name">AWS</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--bg2); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05);">
+  <div class="container">
+    <div class="section-label">// featured projects</div>
+    <div class="section-title">What I've built</div>
+    <div class="section-desc">
+      Enterprise-grade AI systems designed for real business impact.
+    </div>
+
+    <!-- Project 1: AI Sales Agent -->
+    <div class="project-card fade-in">
+      <div class="project-video">
+        <iframe src="https://www.youtube.com/embed/nmR82I9mroA" title="AI Sales Agent Demo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag tag-ai">Agentic AI</span>
+          <span class="project-tag tag-live">Full Demo</span>
+        </div>
+        <h3 class="project-title">AI Sales Agent</h3>
+        <p class="project-subtitle">Enterprise SDR Platform — Multi-Agent Sales Automation</p>
+        <p class="project-desc">
+          An AI-powered Sales Development Representative that automates the entire outbound sales
+          process. From lead research and ICP scoring to personalized email generation, AI reply
+          classification, and automated meeting booking via Calendly. Replaces manual SDR work —
+          what takes a human 8 hours, this does in 8 minutes.
+        </p>
+        <div class="project-features">
+          <div class="project-feat">AI lead enrichment & ICP scoring</div>
+          <div class="project-feat">GPT-4o personalized email generation</div>
+          <div class="project-feat">Multi-step campaign sequences</div>
+          <div class="project-feat">AI reply classification (7 categories)</div>
+          <div class="project-feat">Calendly auto-detection</div>
+          <div class="project-feat">Real-time notifications</div>
+        </div>
+        <div class="project-stack">
+          <span>FastAPI</span><span>React</span><span>TypeScript</span><span>LangGraph</span>
+          <span>Celery</span><span>Redis</span><span>PostgreSQL</span><span>GPT-4o</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 2: TraceAI -->
+    <div class="project-card fade-in">
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag tag-rag">RAG System</span>
+          <span class="project-tag tag-ai">Enterprise</span>
+        </div>
+        <h3 class="project-title">TraceAI</h3>
+        <p class="project-subtitle">Enterprise Verified RAG — Verified SOP Execution</p>
+        <p class="project-desc">
+          An enterprise-grade Retrieval Augmented Generation system for verified SOP execution.
+          Features hybrid retrieval (ChromaDB + BM25), deterministic safety pre-filters, domain-mismatch
+          detection with session locking, and citation rescoring. Designed for manufacturing and
+          compliance-heavy industries where accuracy is non-negotiable.
+        </p>
+        <div class="project-features">
+          <div class="project-feat">Hybrid retrieval (ChromaDB + BM25)</div>
+          <div class="project-feat">Deterministic safety pre-filter</div>
+          <div class="project-feat">Domain-mismatch detection</div>
+          <div class="project-feat">Citation rescoring & aggregation</div>
+          <div class="project-feat">Session locking</div>
+          <div class="project-feat">Dashboard with analytics</div>
+        </div>
+        <div class="project-stack">
+          <span>FastAPI</span><span>React</span><span>ChromaDB</span><span>BM25</span>
+          <span>PostgreSQL</span><span>Celery</span><span>GPT-4o-mini</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Project 3: OpsFix AI -->
+    <div class="project-card fade-in">
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="project-tag tag-mfg">Manufacturing</span>
+          <span class="project-tag tag-ai">Incident Resolution</span>
+        </div>
+        <h3 class="project-title">OpsFix AI</h3>
+        <p class="project-subtitle">Manufacturing Incident Resolution — AI-Powered Diagnostics</p>
+        <p class="project-desc">
+          An intelligent incident resolution system built for manufacturing environments but
+          adaptable to any domain with SOP-based workflows — including healthcare, IT operations,
+          and financial services. Integrates with SCADA/PLC systems, uses RAG-powered diagnostics
+          with 6 manufacturing SOPs, and features auto-SOP selection with a 0.70 confidence
+          threshold. Easily extensible to integrate with ServiceNow, Dynatrace, Splunk, and
+          other enterprise monitoring tools. Reduces unplanned downtime through AI-guided troubleshooting.
+        </p>
+        <div class="project-features">
+          <div class="project-feat">SCADA/PLC mock integration</div>
+          <div class="project-feat">RAG-powered DIAGNOSE agent</div>
+          <div class="project-feat">Auto-SOP selection (0.70 threshold)</div>
+          <div class="project-feat">6 manufacturing SOPs</div>
+          <div class="project-feat">LangGraph agent orchestration</div>
+          <div class="project-feat">Multi-domain: Manufacturing, Healthcare, IT Ops</div>
+        </div>
+        <div class="project-stack">
+          <span>FastAPI</span><span>React</span><span>TypeScript</span><span>LangGraph</span>
+          <span>pgvector</span><span>Celery</span><span>GPT-4o-mini</span><span>ServiceNow</span><span>Dynatrace</span><span>Splunk</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="section-label">// experience</div>
+    <div class="section-title">Where I've worked</div>
+    <div class="exp-list">
+      <div class="exp-card fade-in">
+        <div class="exp-date">2025 — Present</div>
+        <div>
+          <div class="exp-title">Senior Software Engineer</div>
+          <div class="exp-company">HCLTech, Bangalore</div>
+          <div class="exp-desc">
+            Building GenAI POCs including RAG pipelines, SOP Generator, Document Comparison,
+            and Incident Resolution Center. Working with ServiceNow, Azure OpenAI, and
+            enterprise-scale LLM deployments.
+          </div>
+        </div>
+      </div>
+      <div class="exp-card fade-in">
+        <div class="exp-date">2023 — 2024</div>
+        <div>
+          <div class="exp-title">ML Engineer</div>
+          <div class="exp-company">Admobs, Mumbai</div>
+          <div class="exp-desc">
+            Developed machine learning models, NLP pipelines, and data processing systems.
+            Worked on text summarization, recommendation engines, and predictive analytics.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-section">
+      <div class="section-label" style="text-align:center;">// let's connect</div>
+      <div class="contact-title">Have a project in mind?</div>
+      <div class="contact-desc">
+        I help companies build AI-powered automation systems that save time and reduce costs.
+        Let's discuss how AI can transform your business.
+      </div>
+      <div class="contact-links">
+        <a href="mailto:shajahan.aiworks@gmail.com" class="contact-link">
+          <span class="contact-link-icon">✉</span> shajahan.aiworks@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/shajahanpj/" target="_blank" class="contact-link">
+          <span class="contact-link-icon">in</span> LinkedIn
+        </a>
+        <a href="https://github.com/ShajahanPJ" target="_blank" class="contact-link">
+          <span class="contact-link-icon">&lt;/&gt;</span> GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <p>Shajahan PJ — AI Solutions Engineer — Bangalore, India</p>
+  </div>
+</footer>
+
+<!-- Scroll animations -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
